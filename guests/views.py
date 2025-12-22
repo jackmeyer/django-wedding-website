@@ -5,9 +5,9 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from django.db.models import Count, Q
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
+from django.db.models import Count, Q, Q
+from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from guests import csv_import
 from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, guess_party_by_invite_id_or_404, \
@@ -154,6 +154,30 @@ def test_email(request, template_id):
     context = get_save_the_date_context(template_id)
     send_save_the_date_email(context, [settings.DEFAULT_WEDDING_TEST_EMAIL])
     return HttpResponse('sent!')
+
+
+def find_invitation(request):
+    if request.method == 'POST':
+        last_name = request.POST.get('last_name', '').strip()
+        if not last_name:
+            # If no last name provided, redirect back to the RSVP section
+            return redirect('home')
+        
+        # Find all guests with this last name
+        guests = Guest.objects.filter(last_name__iexact=last_name)
+        
+        if not guests.exists():
+            # No guest found with this last name
+            return redirect('home')
+        
+        # Get the party associated with the first guest found
+        party = guests.first().party
+        
+        # Redirect to the invitation page for this party using the invitation_id
+        return redirect('invitation', invite_id=party.invitation_id)
+    
+    # If GET request, redirect back to home
+    return redirect('home')
 
 
 def _base64_encode(filepath):

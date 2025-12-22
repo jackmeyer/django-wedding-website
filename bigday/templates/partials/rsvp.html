@@ -1,0 +1,15 @@
+{% load static %}
+<section class="rsvp">
+  <div class="container">
+    <h2>RSVP</h2>
+    <p>Please input the last name on your invitation to access your RSVP details:</p>
+    <form method="post" action="{% url 'find_invitation' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Find My Invitation</button>
+    </form>
+  </div>
+</section>

@@ -35,6 +35,9 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="#rsvp">RSVP</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -45,14 +48,11 @@
     <header id="main-header">
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>We did it!!</h1>
-                {% comment %}
                 <hr>
                 <h2>It's wedding week!</h2>
                 <a href="#welcome" class="btn btn-info btn-xl page-scroll">Welcome</a>
                 <a href="#event" class="btn btn-primary btn-xl page-scroll">Friday</a>
                 <a href="#saturday-event" class="btn btn-success btn-xl page-scroll">Saturday</a>
-                {% endcomment %}
             </div>
         </div>
     </header>
@@ -140,8 +140,10 @@
     <section id="story" class="bg-dark">
         {% include 'partials/story.html' %}
     </section>
-    {% include 'partials/proposal.html' %}
-    {% include 'partials/save-the-dates.html' %}
+    <section id="rsvp" class="bg-dark">
+        {% include 'partials/proposal.html' %}
+    </section>
+    {% include 'partials/rsvp.html' %}
     <section id="contact" class="bg-dark">
         <div class="container">
             <div class="row">
