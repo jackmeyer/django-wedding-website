@@ -90,6 +90,8 @@ aside {
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+    /* Initially hide the navbar */
+    display: none;
 }
 
 .navbar-default .navbar-header .navbar-brand {
@@ -145,7 +147,7 @@ aside {
 
     .navbar-default .nav > li>a,
     .navbar-default .nav>li>a:focus {
-        color: rgba(28,56,81,.7);
+        color: rgba(0, 0, 0);
     }
 
     .navbar-default .nav > li>a:hover,
@@ -154,7 +156,7 @@ aside {
     }
 
     .navbar-default.affix {
-        border-color: rgba(34,34,34,.05);
+        border-color: rgba(0, 0, 0);
         background-color: #fff;
     }
 
@@ -193,7 +195,7 @@ header {
 }
 
 #main-header {
-    background-image: url('../images/wedding-selfie-better.jpg');
+    background-image: url('../images/main-background.jpg');
 }
 
 header .header-content {
@@ -237,7 +239,7 @@ header .header-content .header-content-inner p {
 
     header .header-content {
         position: absolute;
-        top: 15%;
+        top: 80%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -478,6 +480,68 @@ fieldset[disabled] .btn-primary.active {
 
 .btn-xl {
     padding: 15px 30px;
+}
+
+.welcome-button {
+    background: transparent;
+    color: white;
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.arrow-down {
+    margin-left: 8px;
+    font-size: 24px;
+    animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    -moz-animation: bounce 2s infinite;
+    -o-animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-20px);
+    }
+    60% {
+        -webkit-transform: translateY(-10px);
+    }
+}
+
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-20px);
+    }
+    60% {
+        -moz-transform: translateY(-10px);
+    }
+}
+
+/* Ensure animation is not overridden by other styles */
+.arrow-down {
+    display: inline-block;
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
 }
 
 ::-moz-selection {
