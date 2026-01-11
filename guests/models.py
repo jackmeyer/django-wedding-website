@@ -1,9 +1,21 @@
 from __future__ import unicode_literals
 import datetime
+import json
+import os
 import uuid
 
 from django.db import models
 from django.dispatch import receiver
+
+
+def _load_access_codes():
+    data_dir = os.path.join(os.path.dirname(__file__), 'data')
+    with open(os.path.join(data_dir, 'access_codes.json'), 'r') as f:
+        codes = json.load(f)
+    return [(c['access_code'], c['access_code']) for c in codes]
+
+
+ALLOWED_ACCESS_CODES = _load_access_codes()
 
 # these will determine the default formality of correspondence
 ALLOWED_TYPES = [
@@ -30,6 +42,7 @@ class Party(models.Model):
     invitation_sent = models.DateTimeField(null=True, blank=True, default=None)
     invitation_opened = models.DateTimeField(null=True, blank=True, default=None)
     is_invited = models.BooleanField(default=False)
+    access_code = models.CharField(max_length=32, db_index=True, choices=ALLOWED_ACCESS_CODES, unique=True)
     rehearsal_dinner = models.BooleanField(default=False)
     is_attending = models.BooleanField(default=None, null=True)
     comments = models.TextField(null=True, blank=True)

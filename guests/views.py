@@ -1,5 +1,7 @@
 import base64
 from collections import namedtuple
+import json
+import os
 import random
 from datetime import datetime
 from django.conf import settings
@@ -85,11 +87,17 @@ def invitation(request, invite_id):
         party.is_attending = party.any_guests_attending
         party.save()
         return HttpResponseRedirect(reverse('rsvp-confirm', args=[invite_id]))
+    data_dir = os.path.join(os.path.dirname(__file__), 'data')
+    with open(os.path.join(data_dir, 'access_codes.json'), 'r') as f:
+        codes = json.load(f)
+    code_info = next((c for c in codes if c['access_code'] == party.access_code.upper()), None)
+    description = code_info['description'] if code_info else "No description available"
     return render(request, template_name='guests/invitation.html', context={
         'party': party,
         'meals': MEALS,
         'couple_name' : settings.BRIDE_AND_GROOM,
-        'website_url': settings.WEDDING_WEBSITE_URL,        
+        'website_url': settings.WEDDING_WEBSITE_URL,
+        'access_code_description': description,
     })
 
 
@@ -158,24 +166,21 @@ def test_email(request, template_id):
 
 def find_invitation(request):
     if request.method == 'POST':
-        last_name = request.POST.get('last_name', '').strip()
-        if not last_name:
-            # If no last name provided, redirect back to the RSVP section
+        access_code = request.POST.get('access_code', '').strip()
+        if not access_code:
+            # If no access code provided, redirect back to the RSVP section
             return redirect('home')
-        
-        # Find all guests with this last name
-        guests = Guest.objects.filter(last_name__iexact=last_name)
-        
-        if not guests.exists():
-            # No guest found with this last name
+
+        # Find the party with this access code
+        try:
+            party = Party.objects.get(access_code=access_code)
+        except Party.DoesNotExist:
+            # No party found with this access code
             return redirect('home')
-        
-        # Get the party associated with the first guest found
-        party = guests.first().party
-        
+
         # Redirect to the invitation page for this party using the invitation_id
         return redirect('invitation', invite_id=party.invitation_id)
-    
+
     # If GET request, redirect back to home
     return redirect('home')
 

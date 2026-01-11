@@ -31,6 +31,7 @@ def get_invitation_context(party):
         'page_title': "Cory and Rowena - You're Invited!",
         'preheader_text': "You are invited!",
         'invitation_id': party.invitation_id,
+        'access_code': party.access_code,
         'party': party,
         'meals': MEALS,
     }

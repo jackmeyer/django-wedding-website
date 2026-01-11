@@ -2,12 +2,12 @@
 <section class="rsvp">
   <div class="container">
     <h2>RSVP</h2>
-    <p>Please enter the last name on your invitation to access your invitation details:</p>
+    <p>Please enter your access code to access your invitation details:</p>
     <form method="post" action="{% url 'find_invitation' %}">
       {% csrf_token %}
       <div class="form-group">
-        <!-- <label for="last_name">Last Name</label> -->
-        <input type="text" class="form-control" id="last_name" name="last_name" width="relative" required>
+        <!-- <label for="access_code">Access Code</label> -->
+        <input type="text" class="form-control" id="access_code" name="access_code" width="relative" required>
       </div>
       <button type="submit" class="btn btn-primary">Find My Invitation</button>
     </form>
