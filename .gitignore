@@ -6,7 +6,5 @@ localsettings.py
 *.sqlite3
 static_root
 _working/
-static/
-guests/static/save-the-date/images/archive/
 .DS_Store
 .venv/
