@@ -17,7 +17,7 @@ body {
 
 hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: #4A3A32;
     border-width: 3px;
 }
 
@@ -26,7 +26,7 @@ hr.light {
 }
 
 a {
-    color: #f05f40;
+    color: #ff5500;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -54,7 +54,7 @@ p {
 
 
 .bg-primary {
-    background-color: #f05f40;
+    background-color: #4A3A32;
 }
 
 .bg-primary a {
@@ -64,7 +64,7 @@ p {
 
 .bg-dark {
     color: #fff;
-    background-color: #222;
+    background-color: #304934;
 }
 
 .text-faded {
@@ -98,7 +98,7 @@ aside {
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #f05f40;
+    color: #4A3A32;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -116,12 +116,12 @@ aside {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: #f05f40;
+    color: #4A3A32;
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #f05f40!important;
+    color: #4A3A32!important;
     background-color: transparent;
 }
 
@@ -162,7 +162,7 @@ aside {
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 14px;
-        color: #f05f40;
+        color: #4A3A32;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -177,17 +177,17 @@ aside {
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: #f05f40;
+        color: #4A3A32;
     }
 }
 
 header {
     position: relative;
     width: 100%;
-    min-height: auto;
+    height: 100vh;
     text-align: center;
     color: rgb(28,56,81);
-    background-position: center;
+    background-position: 40% 50%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -195,7 +195,7 @@ header {
 }
 
 #main-header {
-    background-image: url('../images/main-background.jpg');
+    background-image: url('../images/home_pic.jpg');
 }
 
 header .header-content {
@@ -229,10 +229,6 @@ header .header-content .header-content-inner p {
 }
 
 @media(min-width:768px) {
-    header {
-        min-height: 100%;
-    }
-
     header.secondary {
         min-height: 30%;
     }
@@ -370,7 +366,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #f05f40;
+    color: #ff5500;
 }
 
 .no-gutter > [class*=col-] {
@@ -380,7 +376,7 @@ header .header-content .header-content-inner p {
 
 .btn-default {
     border-color: #fff;
-    color: #222;
+    color: #304934;
     background-color: #fff;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
@@ -394,7 +390,7 @@ header .header-content .header-content-inner p {
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
     border-color: #ededed;
-    color: #222;
+    color: #304934;
     background-color: #f2f2f2;
 }
 
@@ -428,13 +424,13 @@ fieldset[disabled] .btn-default.active {
 
 .btn-default .badge {
     color: #fff;
-    background-color: #222;
+    background-color: #304934;
 }
 
 .btn-primary {
-    border-color: #f05f40;
+    border-color: #4A3A32;
     color: #fff;
-    background-color: #f05f40;
+    background-color: #4A3A32;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -475,12 +471,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #f05f40;
-    background-color: #f05f40;
+    border-color: #4A3A32;
+    background-color: #4A3A32;
 }
 
 .btn-primary .badge {
-    color: #f05f40;
+    color: #4A3A32;
     background-color: #fff;
 }
 
@@ -561,13 +557,13 @@ fieldset[disabled] .btn-primary.active {
 ::-moz-selection {
     text-shadow: none;
     color: #fff;
-    background: #222;
+    background: #304934;
 }
 
 ::selection {
     text-shadow: none;
     color: #fff;
-    background: #222;
+    background: #304934;
 }
 
 img::selection {
@@ -581,11 +577,11 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: #222;
+    webkit-tap-highlight-color: #304934;
 
 }
 
 #footer {
-    background-color: #222;
+    background-color: #304934;
     padding-bottom: 30px;
 }
